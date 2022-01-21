@@ -8,20 +8,25 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1 class="page-title">Coding Quiz Challenge</h1>
-        <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <button class="btn" id="start-quiz">Start Quiz</button>
-    </header>
+    <div class="container">
+        <div class="quiz-container">
+            <div id="quiz">
+                <h1 class="title">Coding Quiz Challenge</h1>
+                <p> Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+                
+                <hr />
+                <h2 id="questions"></h2>
 
-    <main>
-        <section class="question-one"></section>
-        <h2 class="question-title"></h2>
-        <ul class="options" id="pick-an-option">
-            <li class="option-one"></li>
-        </ul>
-    </main>
-    
+                <div id="options"></div>
+                
+                <hr />
+                <button class="start-btn" onclick="remove(this)">Start</button>
+                <footer>
+                    <p id="progress">Question x of y</p>
+                </footer>
+        </div>
+
+
     <script src="./assets/js/game.js"></script>
 </body>
 </html>
