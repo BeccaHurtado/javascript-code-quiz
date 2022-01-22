@@ -12,11 +12,10 @@ optionOne.addEventListener("click", checkAnswer)
 optionTwo.addEventListener("click", checkAnswer)
 optionThree.addEventListener("click", checkAnswer)
 optionFour.addEventListener("click", checkAnswer)
-StartBtn.addEventListener("click", function () {
-    StartBtn.style.display = "none"
-    quizContainer.style.display = "block"
-    displayQuestions()
-})
+var timerObj;
+var timerCount = 30;
+var timerElement = document.getElementById("timer")
+var progressElem = document.getElementById("progress")
 const questionArray = [
     {
         question: 'The condition in an if/ else statement is enclosed with ____.',
@@ -28,7 +27,7 @@ const questionArray = [
         ],
         answer: 2
     },
-
+    
     {
         question: 'Arrays in JavaScript can be used to store ____.',
         options: [
@@ -39,7 +38,7 @@ const questionArray = [
         ],
         answer: 3
     },
-
+    
     {
         question: 'In how many ways a JavaScript code can be involved in an HTML file?',
         options: [
@@ -57,6 +56,22 @@ function remove(el) {
     element.remove();
     displayQuestions() //CALL the displayQuestions function
 }
+StartBtn.addEventListener("click", function () {
+    StartBtn.style.display = "none"
+    quizContainer.style.display = "block"
+    timerObj = setInterval(function() {
+    timerElement.textContent = "Time left:"+timerCount
+    if (timerCount > 1) {
+        timerCount --;
+    } else {
+        clearInterval(timerObj)
+        quizContainer.style.display = "none"
+        timerElement.textContent = "Time Up!"
+    }
+    },1000)
+    displayQuestions()
+})
+
 function displayQuestions() {
 
     // which, for now, will just grab an element, console.log, and change it's text
@@ -71,7 +86,23 @@ function displayQuestions() {
 function checkAnswer () {
     var userAnswer = this.getAttribute("data-value")
     console.log(userAnswer)
+    if (userAnswer != questionArray[currentQuestionIndex].answer) {
+        timerCount  -= 10
+        progressElem.textContent = "Wrong!" 
+    }else{
+        progressElem.textContent = "Correct!"    
+    }
+    if (currentQuestionIndex < questionArray.length-1){
+        currentQuestionIndex ++;
+        displayQuestions();
+    } else {
+        quizContainer.style.display = "none"
+        timerElement.textContent = "Final Score:"+timerCount
+        clearInterval(timerObj)
+    }
+
 }
+
 
 console.log(questionArray);
 
