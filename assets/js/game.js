@@ -8,6 +8,10 @@ var optionOne = document.getElementById("option1")
 var optionTwo = document.getElementById("option2")
 var optionThree = document.getElementById("option3")
 var optionFour = document.getElementById("option4")
+optionOne.addEventListener("click", checkAnswer)
+optionTwo.addEventListener("click", checkAnswer)
+optionThree.addEventListener("click", checkAnswer)
+optionFour.addEventListener("click", checkAnswer)
 StartBtn.addEventListener("click", function () {
     StartBtn.style.display = "none"
     quizContainer.style.display = "block"
@@ -64,6 +68,10 @@ function displayQuestions() {
     optionFour.textContent = questionArray[currentQuestionIndex].options[3]
 }
 
+function checkAnswer () {
+    var userAnswer = this.getAttribute("data-value")
+    console.log(userAnswer)
+}
 
 console.log(questionArray);
 
