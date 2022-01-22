@@ -1,17 +1,5 @@
 const StartBtn = document.querySelector(".start-btn")
 const title = document.querySelector(".title")
-
-function remove(el) {
-    var element = el;
-    element.remove();
-}
-
-const displayQuestions = function() {
-    questions.innerHTML = "";
-    options.innerHTML = "";
-    quizContainer.appendChild(questions);
-}
-
 const questionArray = [
 {
     question: 'The condition in an if/ else statement is enclosed with ____.',
@@ -46,6 +34,20 @@ const questionArray = [
     answer: 'all of the above'
 }
 ]
+
+function remove(el) {
+    var element = el;
+    element.remove();
+    displayQuestions() //CALL the displayQuestions function
+}
+
+const displayQuestions = function() {
+    // which, for now, will just grab an element, console.log, and change it's text
+
+var questionsElem = document.getElementById("questions") //store that HTML elemnt
+questionsElem.textContent = (questionArray);
+}
+
 
 console.log(questionArray);
 
