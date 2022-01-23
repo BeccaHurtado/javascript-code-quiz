@@ -1,17 +1,48 @@
 body {
-    padding: 0;
-    margin: 0;
-}
-
-h1 {
-    background-color: cornsilk;
-}
-
-.quiz-container {
+    background-color: #F5FAFA;
     text-align: center;
-    background-color: cadetblue;
 }
 
-.progress {
-    font-size: 18px;
+header {
+    font-family: 'Comfortaa', cursive;
+    margin: 130px;
+    padding: 10px;
 }
+
+header h1 {
+    font-size: 50px;
+}
+.description {
+    font-size: 20px;
+}
+
+.question-container {
+    padding: 30px;
+    margin-left: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.start-btn, .btn {
+    background-color: #C1DAD6;
+    padding: 5px 10px;
+    font-size: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 10px;
+}
+.btn {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 150px;
+    justify-content: flex-start;
+    padding: 5px 20px;
+}
+
+.start-btn:hover, .btn:hover {
+    background-color: #6D929B;
+}
+
+
+
+

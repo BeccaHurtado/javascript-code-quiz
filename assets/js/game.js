@@ -13,9 +13,11 @@ optionTwo.addEventListener("click", checkAnswer)
 optionThree.addEventListener("click", checkAnswer)
 optionFour.addEventListener("click", checkAnswer)
 var timerObj;
-var timerCount = 30;
+var timerCount = 60;
 var timerElement = document.getElementById("timer")
 var progressElem = document.getElementById("progress")
+var highScore = document.getElementById("user-initials")
+var fullQuiz = document.querySelector(".full-quiz")
 const questionArray = [
     {
         question: 'The condition in an if/ else statement is enclosed with ____.',
@@ -60,7 +62,7 @@ StartBtn.addEventListener("click", function () {
     StartBtn.style.display = "none"
     quizContainer.style.display = "block"
     timerObj = setInterval(function() {
-    timerElement.textContent = "Time left:"+timerCount
+    timerElement.textContent = "Time left: "+timerCount
     if (timerCount > 1) {
         timerCount --;
     } else {
@@ -97,11 +99,11 @@ function checkAnswer () {
         displayQuestions();
     } else {
         quizContainer.style.display = "none"
-        timerElement.textContent = "Final Score:"+timerCount
+        timerElement.textContent = "Final Score: "+timerCount
         clearInterval(timerObj)
     }
-
 }
+
 
 
 console.log(questionArray);
