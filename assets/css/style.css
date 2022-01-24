@@ -5,7 +5,7 @@ body {
 
 header {
     font-family: 'Comfortaa', cursive;
-    margin: 130px;
+    margin: 130px 130px 0px 130px;
     padding: 10px;
 }
 
@@ -17,8 +17,8 @@ header h1 {
 }
 
 .question-container {
-    padding: 30px;
-    margin-left: 100px;
+    margin-left: 150px;
+    padding: 30px 0 0 0;
     display: flex;
     flex-wrap: wrap;
     text-align: left;
@@ -41,6 +41,15 @@ header h1 {
 
 .start-btn:hover, .btn:hover {
     background-color: #6D929B;
+}
+
+input {
+    margin: 0px;
+    padding: 10px;
+}
+
+#timer {
+    padding: 5px;
 }
 
 

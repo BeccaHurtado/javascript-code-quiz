@@ -17,7 +17,11 @@ var timerCount = 60;
 var timerElement = document.getElementById("timer")
 var progressElem = document.getElementById("progress")
 var highScore = document.getElementById("user-initials")
-var fullQuiz = document.querySelector(".full-quiz")
+var descriptionEl = document.querySelector(".description")
+
+var intials = document.querySelector("#initials")
+var submitBtn = document.querySelector("#submit")
+
 const questionArray = [
     {
         question: 'The condition in an if/ else statement is enclosed with ____.',
@@ -53,13 +57,17 @@ const questionArray = [
     }
 ]
 
+
+highScore.style.display = "none"
 function remove(el) {
     var element = el;
     element.remove();
     displayQuestions() //CALL the displayQuestions function
 }
+
 StartBtn.addEventListener("click", function () {
     StartBtn.style.display = "none"
+    descriptionEl.style.display = "none"
     quizContainer.style.display = "block"
     timerObj = setInterval(function() {
     timerElement.textContent = "Time left: "+timerCount
@@ -68,16 +76,14 @@ StartBtn.addEventListener("click", function () {
     } else {
         clearInterval(timerObj)
         quizContainer.style.display = "none"
-        timerElement.textContent = "Time Up!"
+        descriptionEl.style.display = "none"
+        timerElement.textContent = "Time 's Up!"
     }
     },1000)
     displayQuestions()
 })
 
 function displayQuestions() {
-
-    // which, for now, will just grab an element, console.log, and change it's text
-
     questionsElem.textContent = questionArray[currentQuestionIndex].question
     optionOne.textContent = questionArray[currentQuestionIndex].options[0]
     optionTwo.textContent = questionArray[currentQuestionIndex].options[1]
@@ -99,14 +105,24 @@ function checkAnswer () {
         displayQuestions();
     } else {
         quizContainer.style.display = "none"
-        timerElement.textContent = "Final Score: "+timerCount
+        descriptionEl.style.display = "none"
+        highScore.style.display = "block"
+        timerElement.textContent = "Final Score: "+ timerCount 
         clearInterval(timerObj)
     }
 }
 
+submitBtn.addEventListener("click", function(){
+
+    var user = {
+        intials: intials.value.trim(),
+        score: timerCount
+    };
+    localStorage.setItem("user", JSON.stringify(user));
+});
 
 
-console.log(questionArray);
+
 
 
 
