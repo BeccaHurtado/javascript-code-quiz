@@ -54,7 +54,48 @@ const questionArray = [
             'all of the above'
         ],
         answer: 3
+    },
+    {
+        question: 'An array can be sorted in a reverse manner through the method',
+        options: [
+            'sort()',
+            'reverse()',
+            'rev.length()',
+            'sort.length()'
+        ],
+        answer: 1
+    },
+    {
+        question: 'JavaScript is ideal to',
+        options: [
+            'make computations in HTML simpler',
+            'increase the download time for the client',
+            'increase the loading time of the website',
+            'minimize storage requirements on the web server'
+        ],
+        answer: 3
+    },
+    {
+        question: 'JavaScript is a _____ language',
+        options: [
+            'object-oriented',
+            'object-based',
+            'high-level',
+            'assembly-language'
+        ],
+        answer: 1
+    },
+    {
+        question: 'The "var" and "function" are _____',
+        options: [
+            'keywords',
+            'prototypes',
+            'data types',
+            'declaration statements'
+        ],
+        answer: 3
     }
+
 ]
 
 
@@ -96,7 +137,7 @@ function checkAnswer () {
     console.log(userAnswer)
     if (userAnswer != questionArray[currentQuestionIndex].answer) {
         timerCount  -= 10
-        progressElem.textContent = "Wrong!" 
+        progressElem.textContent = "Wrong!"
     }else{
         progressElem.textContent = "Correct!"    
     }
