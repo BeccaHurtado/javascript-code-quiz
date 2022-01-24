@@ -56,6 +56,10 @@ header h1 {
     background-color: #6D929B;
 }
 
+.start-btn::after, .btn::after {
+    background-color: #C1DAD6;
+}
+
 input {
     margin: 0px;
     padding: 10px;
