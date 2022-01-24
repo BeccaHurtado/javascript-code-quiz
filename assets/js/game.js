@@ -113,13 +113,16 @@ function checkAnswer () {
 }
 
 submitBtn.addEventListener("click", function(){
-
     var user = {
         intials: intials.value.trim(),
         score: timerCount
     };
-    localStorage.setItem("user", JSON.stringify(user));
-});
+     localStorage.setItem('user', JSON.stringify(user));
+
+    });
+    var retrievedUserInput = localStorage.getItem('user');
+    console.log('retrievedUserInput', JSON.parse(retrievedUserInput))
+
 
 
 
