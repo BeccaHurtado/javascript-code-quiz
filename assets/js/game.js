@@ -18,6 +18,7 @@ var timerElement = document.getElementById("timer")
 var progressElem = document.getElementById("progress")
 var highScore = document.getElementById("user-initials")
 var descriptionEl = document.querySelector(".description")
+var highScoreDisplay = document.querySelector(".high-score-list")
 
 var intials = document.querySelector("#initials")
 var submitBtn = document.querySelector("#submit")
@@ -98,7 +99,6 @@ const questionArray = [
 
 ]
 
-
 highScore.style.display = "none"
 function remove(el) {
     var element = el;
@@ -106,23 +106,25 @@ function remove(el) {
     displayQuestions() //CALL the displayQuestions function
 }
 
-StartBtn.addEventListener("click", function () {
-    StartBtn.style.display = "none"
-    descriptionEl.style.display = "none"
-    quizContainer.style.display = "block"
-    timerObj = setInterval(function() {
-    timerElement.textContent = "Time left: "+timerCount
-    if (timerCount > 1) {
-        timerCount --;
-    } else {
-        clearInterval(timerObj)
-        quizContainer.style.display = "none"
+const startGame = function () {
+    StartBtn.addEventListener("click", function () {
+        StartBtn.style.display = "none"
         descriptionEl.style.display = "none"
-        timerElement.textContent = "Time 's Up!"
-    }
-    },1000)
-    displayQuestions()
-})
+        quizContainer.style.display = "block"
+        timerObj = setInterval(function() {
+        timerElement.textContent = "Time left: "+timerCount
+        if (timerCount > 1) {
+            timerCount --;
+        } else {
+            clearInterval(timerObj)
+            quizContainer.style.display = "none"
+            descriptionEl.style.display = "none"
+            timerElement.textContent = "Time 's Up!"
+        }
+        },1000)
+        displayQuestions()
+    })
+}
 
 function displayQuestions() {
     questionsElem.textContent = questionArray[currentQuestionIndex].question
@@ -150,20 +152,25 @@ function checkAnswer () {
         highScore.style.display = "block"
         timerElement.textContent = "Final Score: "+ timerCount 
         clearInterval(timerObj)
+        viewScores()
     }
 }
+
 
 submitBtn.addEventListener("click", function(){
     var user = {
         intials: intials.value.trim(),
         score: timerCount
     };
-     localStorage.setItem('user', JSON.stringify(user));
-
-    });
+    
     var retrievedUserInput = localStorage.getItem('user');
+    scores.push(user)
     console.log('retrievedUserInput', JSON.parse(retrievedUserInput))
+    
+    localStorage.setItem('user', JSON.stringify(user));
 
+    
+});
 
 
 
